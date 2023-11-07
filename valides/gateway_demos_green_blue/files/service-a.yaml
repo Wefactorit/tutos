@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  namespace: testistio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+    spec:
+      containers:
+      - name: service-a 
+        image: gcr.io/dev-karisimbi-c302/github.com/wefactorit/service-a:0.4 
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a
+  namespace: testistio
+spec:
+  selector:
+    app: service-a
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

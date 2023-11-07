@@ -1,0 +1,4 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/dev-karisimbi-c302/github.com/wefactorit/service-a:0.1', '.']
+images: ['gcr.io/dev-karisimbi-c302/github.com/wefactorit/service-a:0.1']

@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-virtual-service
+  namespace: testistio
+spec:
+  hosts:
+  - "test.exemple.io"
+  gateways:
+  - istio-system/central-gateway
+  http:
+  - match:
+    - uri:
+        exact: /
+    route:
+    - destination:
+        host: service-a
+      weight: 50 
+    - destination:
+        host: service-b
+      weight: 50

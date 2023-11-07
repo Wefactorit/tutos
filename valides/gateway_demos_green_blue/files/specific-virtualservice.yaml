@@ -1,0 +1,34 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-virtual-service
+  namespace: testistio 
+spec:
+  hosts:
+  - "test.cloudeefy.io"
+  gateways:
+  - istio-system/central-gateway
+  http:
+  - match:
+    - headers:
+        user-group:
+          exact: "internal"
+    route:
+    - destination:
+        host: service-b
+      weight: 100
+  - match:
+    - headers:
+        user-group:
+          exact: "external"
+    route:
+    - destination:
+        host: service-a
+      weight: 100
+  - route:  # Default route if no header is matched
+    - destination:
+        host: service-a
+      weight: 90
+    - destination:
+        host: service-b
+      weight: 10
