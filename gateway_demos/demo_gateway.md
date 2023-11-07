@@ -28,7 +28,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "test.cloudeefy.io"
+    - "test.example.io"
 ```
 
 
@@ -42,7 +42,7 @@ metadata:
   namespace: test-istio
 spec:
   hosts:
-  - "test.cloudeefy.io"
+  - "test.example.io"
   gateways:
   - demo-gateway
   http:
@@ -99,7 +99,7 @@ Here's what each YAML does:
 
 1. The `Namespace` YAML creates a namespace called `test_istio` and enables Istio sidecar injection for this namespace.
 2. The `Gateway` YAML sets up a basic HTTP gateway.
-3. The `VirtualService` YAML routes traffic for `test.cloudeefy.io` and forwards requests going to `/hello` to a service named `hello-service`.
+3. The `VirtualService` YAML routes traffic for `test.example.io` and forwards requests going to `/hello` to a service named `hello-service`.
 4. The `Deployment` YAML deploys a single pod of Nginx.
 5. The `Service` YAML creates a Kubernetes service named `hello-service` that exposes the Nginx deployment.
 

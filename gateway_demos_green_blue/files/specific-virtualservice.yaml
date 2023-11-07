@@ -5,7 +5,7 @@ metadata:
   namespace: testistio 
 spec:
   hosts:
-  - "test.cloudeefy.io"
+  - "test.example.io"
   gateways:
   - istio-system/central-gateway
   http:
